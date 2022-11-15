@@ -12,7 +12,7 @@ std::string Version::get() {
   size_t index;
   size_t start, end;
 
-  output = this->file.get();
+  output = file.get();
   if (1 != output.size()) {
     return "|  |";
   }

@@ -11,16 +11,16 @@ std::string Memory::get() {
   size_t length;
   double totalMem, availableMem;
 
-  output = this->file.get();
+  output = file.get();
   length = output.size();
   if (length < 3) {
     return "  0.0Gb/0.0Gb |";
   }
 
-  totalMem = this->get_bytes(output.at(0)) / (1024.0 * 1024.0);
-  availableMem = this->get_bytes(output.at(2)) / (1024.0 * 1024.0);
+  totalMem = get_bytes(output.at(0)) / (1024.0 * 1024.0);
+  availableMem = get_bytes(output.at(2)) / (1024.0 * 1024.0);
 
-  return "  " + this->cut_point(totalMem - availableMem) + "Gb/" + this->cut_point(totalMem) + "Gb |";
+  return "  " + cut_point(totalMem - availableMem) + "Gb/" + cut_point(totalMem) + "Gb |";
 }
 
 std::string Memory::cut_point(double speed) {

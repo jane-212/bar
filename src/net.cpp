@@ -13,7 +13,7 @@ std::string Net::get() {
   long long total;
   double diff;
 
-  output = this->file.get();
+  output = file.get();
   length = output.size();
   if (length <= 2) {
     return "  0Kb/s |";
@@ -21,17 +21,17 @@ std::string Net::get() {
 
   total = 0;
   for (i = 2; i < (int)length; i++) {
-    total += this->get_bytes(output.at(i));
+    total += get_bytes(output.at(i));
   }
 
-  diff = (total - this->bytes) / 1024.0;
+  diff = (total - bytes) / 1024.0;
 
-  this->bytes = total;
+  bytes = total;
 
   if (diff < 1024) {
-    return "  " + this->cut_point(diff) + "Kb/s |";
+    return "  " + cut_point(diff) + "Kb/s |";
   } else {
-    return "  " + this->cut_point(diff / 1024) + "Mb/s |";
+    return "  " + cut_point(diff / 1024) + "Mb/s |";
   }
 }
 
