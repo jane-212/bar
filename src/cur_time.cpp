@@ -11,11 +11,11 @@ std::string CurTime::get() {
 
   lt = localtime(&now);
 
-  return "  " + format() + " ";
+  return format();
 }
 
 std::string CurTime::format() {
-  t = "";
+  t = "  ";
 
   t += std::to_string(lt->tm_year + 1900);
   t += '-';
@@ -28,7 +28,7 @@ std::string CurTime::format() {
     t += '0';
   }
   t += std::to_string(lt->tm_mday);
-  t += ' ';
+  t += " |  ";
   if (lt->tm_hour < 10) {
     t += '0';
   }
@@ -43,6 +43,7 @@ std::string CurTime::format() {
     t += '0';
   }
   t += std::to_string(lt->tm_sec);
+  t += ' ';
 
   return t;
 }
